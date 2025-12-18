@@ -308,12 +308,12 @@ h6,
     border-radius: 4px;
 }
 
-.site-header {
+.site--header {
     padding-top: 18px;
     padding-bottom: 18px;
 }
 
-.wrap--header {
+.header--container {
     display: flex;
     align-items: center;
     justify-content: space-between;
