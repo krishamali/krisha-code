@@ -1,0 +1,215 @@
+   <footer class="site--footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-4">
+                    <div class="footer__title">
+                        <div class="footer__logo">
+                            <a href="#"><img src="images/Logo.png" alt="logo"></a>
+                        </div>
+                        <div class="footer__content">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim a
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-8">
+                    <div class="row">
+                        <div class="col-3">
+                            <div class="footer__heading">
+                                <h5>Information</h5>
+                            </div>
+                            <div class="footer__link">
+                                <ul>
+                                    <li>
+                                        <a href="#">Home</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Shop</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Our Story</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Traceability</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Blog</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="footer__heading">
+                                <h5>Quick Links</h5>
+                            </div>
+                            <div class="footer__link">
+                                <ul>
+                                    <li>
+                                        <a href="#">Privacy Policy</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Terms of Services</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Shipping Policy</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Refund & Cancelation</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Contact Us</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="footer__heading">
+                                <h5> Shop</h5>
+                            </div>
+                            <div class="footer__link">
+                                <ul>
+                                    <li>
+                                        <a href="#">A2 Vedic 
+                                        Bilona Ghee</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="footer__heading">
+                                <h5>Contact us</h5>
+                            </div>
+                            <div class="footer__link">
+                                <ul>
+                                    <li>
+                                        <a href="tel:919879699141">+91 98796 99141</a>
+                                    </li>
+                                    <li>
+                                        <a href="mailto:sales@vaidikmart.com">sales@vaidikmart.com</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="social__icon">
+                                <ul>
+                                    <li>
+                                        <a href="#"><img src="images/facebook.svg" alt="facebook"></a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><img src="images/youtube.svg" alt="youtube"></a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><img src="images/instra.svg" alt="instra"></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright__block">
+            <div class="copyright-text">
+                <p>© 2025 Vaidikmart International, All reseved</p>
+            </div>
+            <div class="copyright__icon">
+                <img src="images/Star.png" alt="Star">
+            </div>
+            <div class="copyright-text">
+                <p>Website Design and Developed by <a href="#"> Webyant</a></p>
+            </div>
+        </div>
+    </footer>
+    
+/*site--footer*/
+
+.site--footer {
+    padding-bottom: 100px;
+    padding-top: 70px;
+}
+
+.footer__logo img {
+    width: 180px;
+    height: 60px;
+    margin-bottom: 22px;
+}
+
+.footer__content p {
+    font-size: 24px;
+}
+
+.footer__heading h5 {
+    margin-bottom: 30px;
+}
+
+.footer__link ul {
+    padding: 0;
+    list-style: none;
+}
+
+.footer__link li {
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.footer__link li a:hover {
+    color: var(--primary-color);
+}
+
+.social__icon img {
+    width: 20px;
+    height: 20px;
+    transform: all 0.3s;
+}
+
+.social__icon ul {
+    padding: 0;
+    list-style: none;
+    display: flex;
+    gap: 45px;
+}
+
+.social__icon li a {
+    border: 2px solid var(--black);
+    border-radius: 50%;
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.social__icon li a:hover {
+    border: 2px solid var(--primary-color);
+    background-color: var(--primary-color);
+    transform: all 0.3s;
+}
+
+.social__icon li a:hover img {
+    filter: brightness(0) invert(1);
+}
+
+.copyright__block {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    padding-top: 20px;
+    align-items: center;
+    border-top: 2px solid rgb(178, 174, 174);
+}
+
+.copyright-text p {
+    font-size: 24px;
+}
+
+.copyright__icon img {
+    width: 31px;
+    height: 31px;
+}
+
+.copyright-text p a {
+    font-weight: 700;
+}
+
+.copyright-text p a:hover {
+    color: var(--primary-color);
+}
