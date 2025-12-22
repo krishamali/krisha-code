@@ -1,0 +1,199 @@
+<header class="site--header">
+        <div class="container header--container">
+            <div class="header__logo">
+                <a href="#"><img src="image/Logo.png" alt="logo"></a>
+            </div>
+            <nav class="navbar" id="mainNav">
+                <ul class="nav-menu">
+                    <li><a href="#" class="nav-link active">Home</a></li>
+                    <li><a href="#" class="nav-link">Services</a></li>
+                    <li><a href="#" class="nav-link">About us</a></li>
+                    <li><a href="#" class="nav-link">Testimonial</a></li>
+                </ul>
+                <div class="mobile-button">
+                    <button class="btn bg-blue">Let's Talk</button>
+                </div>
+            </nav>
+            <div class="header-btn"> 
+                <button class="btn bg-blue">Let's Talk</button>
+            </div>
+            <div class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+    <script src="script.js"></script>
+
+  /* css with responsive*/
+
+  
+/* header*/
+.header__logo {
+    max-width: 180px;
+}
+
+.header__logo a {
+    display: inline-block;
+}
+
+.header__logo a img {
+    object-fit: contain;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    column-gap: 60px;
+    align-items: center;
+}
+
+.nav-link {
+    color: #333;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 8px 0;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: rgb(82, 110, 255);
+}
+
+.header-btn {
+    display: block;
+}
+
+.mobile-button {
+    display: none;
+}
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    cursor: pointer;
+}
+
+.menu-toggle span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background-color: #333;
+    border-radius: 3px;
+    transition: 0.3s;
+}
+@media (max-width: 992px) {
+    .header-btn {
+        display: none;
+    }
+
+    .menu-toggle {
+        display: flex;
+        z-index: 1001;
+    }
+
+    .navbar {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 280px;
+        height: 100%;
+        background: #fff;
+        box-shadow: -5px 0 20px rgba(0, 0, 0, 0.15);
+        padding: 47px 20px 20px;
+        display: flex;
+        flex-direction: column;
+        transition: right 0.4s ease;
+        z-index: 1000;
+    }
+
+    .navbar.active {
+        right: 0;
+    }
+
+    .nav-menu {
+        flex-direction: column;
+        width: 100%;
+        gap: 0;
+    }
+
+    .nav-menu li {
+        width: 100%;
+        border-bottom: 1px solid #eee;
+    }
+
+    .nav-link {
+        width: 100%;
+        padding: 16px 0;
+        font-size: 16px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .mobile-button {
+        display: block;
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .mobile-button .btn {
+        width: 100%;
+    }
+
+    .menu-toggle.active span:nth-child(1) {
+        transform: translateY(9px) rotate(45deg);
+    }
+
+    .menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .menu-toggle.active span:nth-child(3) {
+        transform: translateY(-9px) rotate(-45deg);
+    }
+}
+
+/* script */
+
+document.addEventListener('DOMContentLoaded', function () {
+    const menuToggle = document.getElementById('menuToggle');
+    const navbar = document.getElementById('mainNav');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    // Toggle menu
+    menuToggle.addEventListener('click', function (e) {
+        e.stopPropagation();
+        navbar.classList.toggle('active');
+        menuToggle.classList.toggle('active');
+    });
+
+    // Close menu on link click
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            navbar.classList.remove('active');
+            menuToggle.classList.remove('active');
+
+            navLinks.forEach(l => l.classList.remove('active'));
+            link.classList.add('active');
+        });
+    });
+
+    // Close on outside click
+    document.addEventListener('click', function (e) {
+        if (
+            navbar.classList.contains('active') &&
+            !navbar.contains(e.target) &&
+            !menuToggle.contains(e.target)
+        ) {
+            navbar.classList.remove('active');
+            menuToggle.classList.remove('active');
+        }
+    });
+});
+
