@@ -1,0 +1,94 @@
+  /*  simple  */
+    <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+      
+          <div class="swiper-slide">Slide 1</div>
+          <div class="swiper-slide">Slide 2</div>
+          <div class="swiper-slide">Slide 3</div>
+          <div class="swiper-slide">Slide 4</div>
+      
+        </div>
+      
+        <!-- Arrows -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+      
+        <!-- Dots -->
+        <div class="swiper-pagination"></div>
+      </div>
+
+      /*css*/
+
+
+      
+  /* Slide design */
+  .swiper-slide {
+    background: #2563eb;
+    color: #fff;
+    font-size: 28px;
+    border-radius: 12px;
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Arrows center me */
+  .swiper-button-next,
+  .swiper-button-prev {
+    color: #000;
+    background: #fff;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  }
+  
+  .swiper-button-next::after,
+  .swiper-button-prev::after {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  /* Pagination dots bottom me */
+  .swiper-pagination {
+    bottom: 0 !important;
+  }
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+   <script>
+        var swiper = new Swiper(".mySwiper", {
+          loop: true,
+          spaceBetween: 20,
+        
+          navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+          },
+        
+          pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+          },
+        
+          autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+          },
+        
+          breakpoints: {
+            0: {
+              slidesPerView: 1,
+            },
+            768: {
+              slidesPerView: 2,
+            },
+            1024: {
+              slidesPerView: 3,
+            },
+          },
+        });
+        </script>
+
+        /* */
+        
