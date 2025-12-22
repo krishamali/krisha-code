@@ -12,3 +12,13 @@
   .col-lg-11 { flex: 0 0 91.666666%; max-width: 91.666666%; }
   .col-lg-12 { flex: 0 0 100%; max-width: 100%; }
 }
+
+
+Screen                Size	 
+≥ 1400px	            Extra Large Desktop (XL)	 
+1200 – 1399px	        Large Desktop (LG)	 
+1024 – 1199px	        Desktop / Laptop	 
+768 – 1023px	        Tablet	iPad
+577 – 767px	          Mobile Large	Big phones
+490 – 576px	          Mobile	Normal phones
+≤ 360px             	Small Mobile	Small phones
