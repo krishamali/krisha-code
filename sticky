@@ -1,0 +1,22 @@
+
+.sticky {
+    padding: 16px 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    z-index: 9999;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 2px 4px 8px rgba(98, 107, 115, 0.15);
+}
+
+
+
+$(window).scroll(function() {
+     if ($(this).scrollTop() > 100) {
+         $('.site-header').addClass("sticky");
+     } else {
+         $('.site-header').removeClass("sticky");
+     }
+ })
