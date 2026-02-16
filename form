@@ -1,0 +1,116 @@
+ <section class="section section--form">
+            <div class="container">
+                <form action="#">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="input-block">
+                                <label for="fname">Frist name</label>
+                                <input
+                                    type="text"
+                                    id="fname"
+                                    name="fname"
+                                    placeholder="Frist name"
+                                    required
+                                    pattern="[A-Za-Z]+"
+                                    title="only letters allowed"
+                                />
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="input-block">
+                                <label for="fname">last name</label>
+                                <input
+                                    type="text"
+                                    id="fname"
+                                    name="fname"
+                                    placeholder="last name"
+                                    required
+                                    pattern="[A-Za-Z]+"
+                                    title="only letters allowed"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="input-block">
+                                <label for="email">Email</label>
+                                <input
+                                    type="email"
+                                    id="email"
+                                    name="email"
+                                    placeholder="email"
+                                    required
+                                />
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="input-block">
+                                <label for="mobile">Number</label>
+                                <input
+                                    type="mobile"
+                                    id="mobile"
+                                    name="mobile"
+                                    placeholder="10 digit numbar"
+                                    required
+                                    pattern="[0-9]{10}"
+                                    maxlength="10"
+                                    title="only numbar allowed, 10 digits"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="input-block">
+                                <label for="message">message</label>
+                                <textarea
+                                    name="message"
+                                    id="message"
+                                    rows="4"
+                                    placeholder="your message.."
+                                    required
+                                ></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <button class="btn">submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+
+
+.input-block {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.input-block label {
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.input-block input,
+.input-block textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    font-size: 14px;
+}
+
+.input-block input:focus,
+.input-block textarea:focus {
+    border-color: #007bff;
+}
+
+.input-block.textarea textarea {
+    resize: none;
+    min-height: 100px;
+}
