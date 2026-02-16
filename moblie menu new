@@ -1,0 +1,131 @@
+  <header class="site--header">
+            <div class="container container--header">
+                <div class="header__logo">
+                    <a href="#"><img src="images/logo.svg" alt="logo" /></a>
+                </div>
+                <div class="navbar">
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Shop</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Pages</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li class="btn-1">
+                            <button class="btn">Contact Us</button>
+                        </li>
+                    </ul>
+                </div>
+                <div class="header__btn">
+                    <button class="btn">Contact Us</button>
+                </div>
+                <div class="toggle-menu" id="mobile-menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </header>
+
+
+
+
+/*header*/
+
+.header__logo img {
+    width: 150px;
+    height: 73px;
+}
+
+.navbar ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+}
+
+.navbar li a {
+    padding: 6px 20px;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--black-color);
+    position: relative;
+    display: inline-block;
+}
+
+.navbar li a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    width: 0;
+    height: 3px;
+    background-color: #ffc222;
+    transition: 0.3s ease;
+}
+
+.navbar li a:hover::after {
+    width: 100%;
+}
+
+/*moblie menu*/
+
+.toggle-menu {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 10px;
+    cursor: pointer;
+    border: 1px solid yellow;
+    padding: 8px;
+}
+
+.toggle-menu .bar {
+    height: 2px;
+    width: 25px;
+    background-color: #000;
+    margin: 3px 0;
+    transition: 0.3s;
+}
+
+.btn-1 {
+    display: none;
+}
+
+/* ================= MOBILE RESPONSIVE ================= */
+
+@media (max-width: 768px) {
+    .toggle-menu {
+        display: flex;
+    }
+    .header__btn {
+        display: none;
+    }
+    .btn-1 {
+        display: block;
+    }
+    .navbar {
+        position: absolute;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background: #f5f8b0;
+        display: none;
+    }
+    .navbar ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+    .navbar.active {
+        display: block;
+    }
+}
+
+ <script>
+            const mobileMenu = document.getElementById("mobile-menu");
+            const navbar = document.querySelector(".navbar");
+
+            mobileMenu.addEventListener("click", () => {
+                navbar.classList.toggle("active");
+            });
+        </script>
