@@ -240,9 +240,7 @@ body.menu-open::before {
     z-index: 900;
 }
 
-.sub-menu {
-    display: none;
-}
+
 
 .has-submenu {
     position: relative;
