@@ -1,0 +1,75 @@
+   <div class="marquee">
+                    <div class="marquee__inner">
+                        <div class="item">
+                            <img src="image/icon-1.svg" alt="">
+                            <span>Dry in 5 Minute</span>
+                        </div>
+                        <div class="item">
+                            <img src="image/icon-2.svg" alt="">
+                            <span>Powered By Science</span>
+                        </div>
+                        <div class="item">
+                            <img src="image/icon-3.svg" alt="">
+                            <span>7+ Days Wear</span> 
+                        </div>
+                        <div class="item">
+                            <img src="image/icon-4.svg" alt="">
+                            <span>Soak Free Removal</span>
+                        </div>
+                        <div class="item">
+                            <img src="image/icon-1.svg" alt="">
+                            <span>Dry in 5 Minute</span>
+                        </div>
+                        <div class="item">
+                            <img src="image/icon-2.svg" alt="">
+                            <span>Powered By Science</span>
+                        </div>
+                        <div class="item">
+                            <img src="image/icon-3.svg" alt="">
+                            <span>7+ Days Wear</span>
+                        </div>
+                        <div class="item">
+                            <img src="image/icon-4.svg" alt="">
+                            <span>Soak Free Removal</span>
+                        </div>
+                    </div>
+                </div>
+
+.marquee {
+    overflow: hidden;
+    background: #000;
+    border-radius: 0 0 15px 15px;
+    padding: 20px 0;
+}
+
+.marquee__inner {
+    display: flex;
+    white-space: nowrap;
+    animation: marquee 15s linear infinite;
+}
+
+.item {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 40px;
+}
+
+.item img {
+    width: 30px;
+}
+
+.item span {
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+@keyframes marquee {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}
