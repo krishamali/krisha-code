@@ -342,7 +342,138 @@ const AskAISection = () => {
   );
 };
 
+
+
 export default AskAISection;
+
+// viods//
+"use client";
+
+import { useState } from "react";
+import Image from "next/image";
+
+import v1 from "../../assets/images/v1.png";
+import v2 from "../../assets/images/v2.png";
+import v3 from "../../assets/images/v3.png";
+import v4 from "../../assets/images/v4.png";
+import v5 from "../../assets/images/v5.png";
+import PlayBtn from "../../assets/images/play-icon.png";
+
+const videoData = [
+  { title: "Add Expenses", img: v1 },
+  { title: "Set Budget", img: v2 },
+  { title: "Create Split Event", img: v3 },
+  { title: "Shopping List", img: v4 },
+  { title: "Family Budget", img: v5 },
+];
+
+const VideoGuidesSection = () => {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <section className="w-full bg-[#EEF0F6] py-[80px]">
+      <div className="max-w-[1100px] mx-auto px-6 text-center">
+
+        {/* TITLE */}
+        <h2 className="text-[22px] font-medium text-[#2A2A2A] mb-12">
+          Master money management with{" "}
+          <span className="font-semibold">
+            Spendable Video Guides
+          </span>
+        </h2>
+
+        {/* GRID */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6">
+
+          {videoData.map((item, index) => (
+            <div key={index} className="flex flex-col items-center">
+
+              {/* CARD */}
+              <div className="relative w-full max-w-[180px] rounded-[16px] overflow-hidden shadow-md group cursor-pointer">
+
+                {/* IMAGE */}
+                <Image
+                  src={item.img}
+                  alt={item.title}
+                  width={200}
+                  height={300}
+                  className="w-full h-[260px] object-cover"
+                />
+
+                {/* HOVER OVERLAY */}
+                <div className="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition"></div>
+
+                {/* PLAY BUTTON (BOTTOM RIGHT) */}
+                <button
+                  onClick={() => setOpen(true)}
+                  className="absolute bottom-3 right-3 w-[50px] h-[50px] flex items-center justify-center cursor-pointer group/play"
+                >
+                  {/* WHITE PULSE */}
+                  <span className="absolute w-[70px] h-[70px] rounded-full bg-white/40 scale-0 opacity-0 group-hover/play:scale-8   0 group-hover/play:opacity-100 transition duration-300"></span>
+
+                  {/* BUTTON */}
+                  <div className="relative bg-white rounded-full w-[50px] h-[50px] flex items-center justify-center shadow-lg">
+                    <Image src={PlayBtn} alt="play" width={20} height={20} />
+                  </div>
+                </button>
+
+              </div>
+
+              {/* TITLE */}
+              <p className="mt-3 text-[14px] font-medium text-[#333]">
+                {item.title}
+              </p>
+
+            </div>
+          ))}
+
+        </div>
+
+        {/* BUTTON */}
+        <button className="mt-12 px-6 py-3 bg-gradient-to-r from-purple-500 to-indigo-500 text-white rounded-lg font-medium shadow hover:opacity-90 transition">
+          User Guide →
+        </button>
+
+      </div>
+
+      {/* POPUP VIDEO */}
+      {open && (
+        <div
+          onClick={() => setOpen(false)}
+          className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50"
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="relative w-[90%] md:w-[800px] bg-black rounded-xl overflow-hidden"
+          >
+
+            {/* CLOSE */}
+            <button
+              onClick={() => setOpen(false)}
+              className="absolute top-2 right-2 bg-white w-9 h-9 flex items-center justify-center rounded"
+            >
+              ✕
+            </button>
+
+            {/* VIDEO */}
+            <div className="aspect-video">
+              <iframe
+                className="w-full h-full"
+                src="https://www.youtube.com/embed/x76YKI7BmdY?autoplay=1"
+                allow="autoplay; encrypted-media; fullscreen"
+                allowFullScreen
+              ></iframe>
+            </div>
+
+          </div>
+        </div>
+      )}
+
+    </section>
+  );
+};
+
+export default VideoGuidesSection;
 // 
 
 /* ✅ Animation utility */
@@ -375,3 +506,5 @@ export default AskAISection;
     animation-delay: 0.6s;
 }
 //
+
+
