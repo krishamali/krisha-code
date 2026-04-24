@@ -1,510 +1,648 @@
- // slider//
 "use client";
 
-import { useRef, useEffect } from "react";
-import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
-
 import "swiper/css";
 import "swiper/css/navigation";
 
-import img1 from "../../assets/images/people-sec-1.png";
-import img2 from "../../assets/images/people-sec-2.png";
-import img3 from "../../assets/images/people-sec-3.png";
-import img4 from "../../assets/images/people-sec-4.png";
-import img5 from "../../assets/images/people-sec-5.png";
-import img6 from "../../assets/images/people-sec-6.png";
+import { Navigation } from "swiper/modules";
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
-import PrevIcon from "../../assets/images/prev-arrow.png";
-import NextIcon from "../../assets/images/next.png";
+export default function Swiper2() {
 
-export default function PeopleSlider() {
-  const prevRef = useRef<HTMLButtonElement | null>(null);
-  const nextRef = useRef<HTMLButtonElement | null>(null);
-  const swiperRef = useRef<any>(null);
-
-  useEffect(() => {
-    if (swiperRef.current && prevRef.current && nextRef.current) {
-      swiperRef.current.params.navigation.prevEl = prevRef.current;
-      swiperRef.current.params.navigation.nextEl = nextRef.current;
-
-      swiperRef.current.navigation.destroy();
-      swiperRef.current.navigation.init();
-      swiperRef.current.navigation.update();
-    }
-  }, []);
-
-  const data = [
-    { img: img1, title: "Save time from manual tracking", desc: "By tracking in seconds" },
-    { img: img2, title: "Add transactions on the go", desc: "With easy-to-use features" },
-    { img: img3, title: "All your finances in one place", desc: "One-stop view of cash flow" },
-    { img: img4, title: "Track expenses easily", desc: "Stay on top of spending" },
-    { img: img5, title: "Smart budget insights", desc: "Make better decisions" },
-    { img: img6, title: "Secure & reliable", desc: "Your data is safe" },
+  const reviews = [
+    {
+      text: "I’ve been using Spendable for a few months, and it’s been a game changer for managing my budget.",
+      name: "Gifty",
+    },
+    {
+      text: "Amazing app! Very easy to manage expenses and track savings.",
+      name: "Rahul",
+    },
+    {
+      text: "Very clean UI and smooth experience. Highly recommended!",
+      name: "Priya",
+    },
+    {
+      text: "Best budgeting app I’ve used so far. Super helpful features!",
+      name: "Amit",
+    },
   ];
 
   return (
-    <section className="section-slider py-16 md:py-20 bg-[#f5f5f5] overflow-hidden">
+    <section className="customer-section">
+      <div className="cs-container">
 
-      {/* TITLE */}
-      <div className="max-w-[1200px] mx-auto px-4 md:px-6">
-        <h2 className="lg:text-6xl md:text-3xl font-extrabold mb-8 md:mb-12">
-          Why people <span className="text-purple-600">loved it?</span>
-        </h2>
-      </div>
+        {/* Heading */}
+        <div className="cs-heading">
+          <h2>
+            Our <span>user’s words</span> say it all!
+          </h2>
 
-      {/* SLIDER FULL WIDTH (IMPORTANT) */}
-      <div className="w-full overflow-visible">
+          <div className="cs-img flex">
+            <img src="/images/user1.png" alt="" />
+            <img src="/images/user2.png" alt="" />
+          </div>
+        </div>
 
+        {/* Rating */}
+        <div className="cs-rating">
+          <span>4.7 ★★★★★ Ratings</span>
+        </div>
+
+        {/* Custom Arrows */}
+        <div className="cs-arrows">
+          <div className="prev-btn"><FaArrowLeft /></div>
+          <div className="next-btn"><FaArrowRight /></div>
+        </div>
+
+        {/* Swiper */}
         <Swiper
           modules={[Navigation]}
-          spaceBetween={40}
-          slidesPerView={"auto"}
-          centeredSlides={true}
-          loop={false}
-          speed={600}
-          grabCursor={true}
-          onSwiper={(swiper) => (swiperRef.current = swiper)}
-          className="overflow-visible"
+          navigation={{
+            prevEl: ".prev-btn",
+            nextEl: ".next-btn",
+          }}
+          spaceBetween={20}
+          slidesPerView={1}
+          loop={true}
+          className="our_user_Swiper"
         >
-          {data.map((item, i) => (
-            <SwiperSlide
-              key={i}
-              className="!w-[280px] sm:!w-[320px] md:!w-[450px] lg:!w-[520px]"
-            >
-              <div className="relative w-full h-[487px] rounded-[24px] overflow-hidden">
-
-                <Image
-                  src={item.img}
-                  alt="card"
-                  fill
-                  className="object-cover"
-                />
-
-                <div className="absolute bottom-6 left-6 bg-white px-6 py-5 rounded-[16px] shadow border border-purple-500 w-[85%]">
-
-                  <h4 className="text-[18px] font-semibold">
-                    {item.title}
-                  </h4>
-
-                  <p className="text-sm text-gray-500 mt-2">
-                    {item.desc}
-                  </p>
-
-                </div>
-
+          {reviews.map((item, index) => (
+            <SwiperSlide key={index}>
+              <div className="cs-card">
+                <p>“ {item.text} ”</p>
+                <h4>– {item.name}</h4>
               </div>
             </SwiperSlide>
           ))}
         </Swiper>
 
-        {/* ARROWS (center align container) */}
-        <div className="max-w-[1200px] mx-auto flex justify-between items-center mt-10 px-4 md:px-6">
-
-          <button ref={prevRef}>
-            <Image src={PrevIcon} alt="prev" width={40} height={40} />
-          </button>
-
-          <button ref={nextRef}>
-            <Image src={NextIcon} alt="next" width={40} height={40} />
-          </button>
-
-        </div>
-
       </div>
     </section>
   );
 }
-// action//
+@import "tailwindcss";
+
+@layer components {
+
+  .customer-section {
+    @apply py-[60px] bg-[#f7f7f7];
+  }
+
+  .cs-container {
+    @apply max-w-[1100px] mx-auto px-[15px];
+  }
+
+  .cs-heading {
+    @apply flex justify-between items-center flex-wrap gap-4;
+  }
+
+  .cs-heading h2 {
+    @apply text-[40px] font-bold;
+  }
+
+  .cs-heading span {
+    @apply text-[#6c4cff];
+  }
+
+  .cs-img img {
+    @apply w-[45px] h-[45px] rounded-full ml-[10px];
+  }
+
+  .cs-rating {
+    @apply my-[15px] mb-[20px] font-semibold;
+  }
+
+  .cs-card {
+    @apply p-[40px] rounded-[20px];
+    background: linear-gradient(135deg, #8fd3a9, #7fd1c6);
+  }
+
+  .cs-card p {
+    @apply text-[18px] leading-[1.6];
+  }
+
+  .cs-card h4 {
+    @apply text-right mt-[20px];
+  }
+
+  /* 🔥 Custom arrows */
+  .cs-arrows {
+    @apply flex justify-between items-center mb-[20px];
+  }
+
+  .prev-btn,
+  .next-btn {
+    @apply w-[40px] h-[40px] flex items-center justify-center rounded-full bg-white shadow cursor-pointer transition;
+  }
+
+  .prev-btn:hover,
+  .next-btn:hover {
+    @apply bg-[#6c4cff] text-white;
+  }
+
+  /* 📱 Responsive */
+  @media (max-width: 768px) {
+
+    .cs-heading {
+      @apply flex-col items-start;
+    }
+
+    .cs-heading h2 {
+      @apply text-[26px];
+    }
+
+    .cs-card {
+      @apply p-[25px];
+    }
+
+    .cs-card p {
+      @apply text-[14px];
+    }
+
+    .cs-arrows {
+      @apply justify-between;
+    }
+  }
+
+}
+////////////////////////////////////
 "use client";
 
-import { useState } from "react";
-import Image from "next/image";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/effect-coverflow";
 
-import ActionImage from "../../assets/images/service-head.png";
-import PlayIcon from "../../assets/images/play-icon.png";
+import { EffectCoverflow, Navigation } from "swiper/modules";
 
-export default function ActionSection() {
-  const [open, setOpen] = useState(false);
-  const [pulse, setPulse] = useState(false);
+/* ✅ arrow images import */
+import leftArrow from "@/assets/images/left.png";
+import rightArrow from "@/assets/images/right.png";
 
-  const handleClick = () => {
-    setPulse(true);
-    setOpen(true);
-
-    setTimeout(() => {
-      setPulse(false);
-    }, 400); // ring duration
-  };
-
+export default function AppSlider() {
   return (
-    <section className="py-16 bg-[#f5f5f5]">
+    <section className="app-section">
+      <div className="cs-container">
 
-      {/* TITLE */}
-      <div className="max-w-[1200px] mx-auto text-center mb-10 px-4">
-        <h2 className="text-3xl md:text-5xl font-bold">
-          Spendable <span className="text-purple-600">in action</span>
+        {/* Heading */}
+        <h2 className="app-heading">
+          Download the <span>FREE</span> App Now 🚀
         </h2>
-        <p className="text-gray-500 mt-2">How it works for you:</p>
-      </div>
 
-      {/* IMAGE */}
-      <div className="max-w-[1200px] mx-auto px-4">
-        <div className="relative rounded-[24px] overflow-hidden">
-
-          {/* IMAGE */}
-          <Image
-            src={ActionImage}
-            alt="action"
-            className="w-full h-auto object-cover"
-            priority
-          />
-
-          {/* PLAY BUTTON */}
-      <button
-  onClick={() => setOpen(true)}
-  className="absolute inset-0 flex items-center justify-center cursor-pointer group"
->
-  {/* PULSE RING */}
-  <span className="absolute w-[140px] h-[140px] rounded-full bg-purple-500/30 scale-0 group-hover:scale-100 transition duration-300"></span>
-
-  {/* PLAY BUTTON */}
-  <div className="relative bg-white rounded-full p-6 shadow-xl">
-    <Image src={PlayIcon} alt="play" width={80} height={80} />
-  </div>
-</button>
-
+        {/* Custom Arrows */}
+        <div className="app-arrows">
+          <img src={leftArrow.src} className="prev-btn" />
+          <img src={rightArrow.src} className="next-btn" />
         </div>
-      </div>
 
-      {/* POPUP */}
-      {open && (
-        <div
-          onClick={() => setOpen(false)}
-          className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50"
+        {/* Slider */}
+        <Swiper
+          effect={"coverflow"}
+          grabCursor={true}
+          centeredSlides={true}
+          slidesPerView={3}
+          loop={true}
+          navigation={{
+            prevEl: ".prev-btn",
+            nextEl: ".next-btn",
+          }}
+          modules={[EffectCoverflow, Navigation]}
+          coverflowEffect={{
+            rotate: 0,
+            stretch: 0,
+            depth: 120,
+            modifier: 2,
+            slideShadows: false,
+          }}
+          breakpoints={{
+            0: {
+              slidesPerView: 1,
+            },
+            640: {
+              slidesPerView: 2,
+            },
+            1024: {
+              slidesPerView: 3,
+            },
+          }}
+          className="app-swiper"
         >
-          <div
-            onClick={(e) => e.stopPropagation()}
-            className="relative w-[90%] md:w-[800px] bg-black rounded-xl overflow-hidden"
-          >
-            {/* CLOSE */}
-            <button
-              onClick={() => setOpen(false)}
-              className="absolute top-2 right-2 bg-white w-9 h-9 flex items-center justify-center"
-            >
-              
-            </button>
+          <SwiperSlide>
+            <img src="/images/app1.png" />
+          </SwiperSlide>
 
-            {/* VIDEO */}
-            <div className="aspect-video">
-              <iframe
-                className="w-full h-full"
-                src="https://www.youtube.com/embed/6bA3NmFsxEs?autoplay=1"
-                allow="autoplay; encrypted-media; fullscreen"
-                allowFullScreen
-              ></iframe>
-            </div>
-          </div>
-        </div>
-      )}
+          <SwiperSlide>
+            <img src="/images/app2.png" />
+          </SwiperSlide>
 
+          <SwiperSlide>
+            <img src="/images/app3.png" />
+          </SwiperSlide>
+
+          <SwiperSlide>
+            <img src="/images/app1.png" />
+          </SwiperSlide>
+        </Swiper>
+
+      </div>
     </section>
   );
 }
-//action ke nich vala section//
+@import "tailwindcss";
+
+@layer components {
+
+  .app-section {
+    @apply py-[80px] bg-white text-center;
+  }
+
+  .cs-container {
+    @apply max-w-[1100px] mx-auto px-[15px];
+  }
+
+  .app-heading {
+    @apply text-[42px] font-bold mb-[40px];
+  }
+
+  .app-heading span {
+    @apply text-red-500;
+  }
+
+  /* 🔥 arrows */
+  .app-arrows {
+    @apply flex justify-between items-center mb-[20px];
+  }
+
+  .app-arrows img {
+    @apply w-[30px] cursor-pointer;
+  }
+
+  /* slider */
+  .app-swiper {
+    @apply w-full;
+  }
+
+  .app-swiper img {
+    @apply w-[260px] mx-auto transition duration-300;
+  }
+
+  /* active center zoom */
+  .swiper-slide-active img {
+    @apply scale-110;
+  }
+
+  /* 📱 tablet */
+  @media (max-width: 1024px) {
+    .app-heading {
+      @apply text-[32px];
+    }
+
+    .app-swiper img {
+      @apply w-[220px];
+    }
+  }
+
+  /* 📱 mobile */
+  @media (max-width: 768px) {
+
+    .app-heading {
+      @apply text-[24px];
+    }
+
+    .app-arrows {
+      @apply px-[20px];
+    }
+
+    .app-swiper img {
+      @apply w-[180px];
+    }
+  }
+
+}
+/////////////////////////
 "use client";
 
-import Image from "next/image";
+import { useEffect, useState } from "react";
 
-const AskAISection = () => {
+export default function StatsSection() {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    let start = 0;
+    const end = 19000;
+    const duration = 2000; // 2 sec
+    const incrementTime = 20;
+
+    const step = end / (duration / incrementTime);
+
+    const timer = setInterval(() => {
+      start += step;
+      if (start >= end) {
+        start = end;
+        clearInterval(timer);
+      }
+      setCount(Math.floor(start));
+    }, incrementTime);
+
+    return () => clearInterval(timer);
+  }, []);
+
   return (
-    <section className="w-full bg-[#140A3C] py-[120px]">
-      <div className="max-w-[1100px] mx-auto px-6">
-        
-        {/* HEADING */}
-        <h2 className="text-[42px] md:text-[60px] font-extrabold leading-[1.1] text-white">
-          <span className="text-[#FFD54A]">Ask AI</span>{" "}
-          to add expenses!
+    <section className="stats-section">
+      <div className="cs-container text-center">
+
+        {/* Counter */}
+        <h2 className="stats-number">
+          {count.toLocaleString()}+
         </h2>
 
-        {/* DESCRIPTION */}
-        <p className="mt-5 text-[18px] font-medium text-[#CFCFE8] max-w-[650px] leading-[28px]">
-          AI-driven voice tracking for enhanced convenience and accessibility,
-          particularly beneficial for individuals with disabilities.
+        <p className="stats-text">
+          <strong>19K+</strong>{" "}
+          <span>People daily use</span> Spendable <br />
+          with more joining everyday!
         </p>
 
-        {/* GRID */}
-        <div className="mt-16 grid grid-cols-2 lg:grid-cols-[520px_1fr] gap-[80px] items-start">
-          
-          {/* LEFT */}
-          <div className="text-white max-w-[520px]">
-            
-            <div className="space-y-6">
-              
-              <div className="flex items-start gap-4">
-                <Image
-                  src="/assets/icons/right-tick.png"
-                  alt="tick"
-                  width={22}
-                  height={22}
-                  className="mt-[5px]"
-                />
-                <p className="text-[18px] font-semibold leading-[28px] text-[#E6E6F0]">
-                  Simply ‘Tap and Speak’ and let AI calculate and add your expenses.
-                </p>
-              </div>
+        <p className="stats-available">Available on</p>
 
-              <div className="flex items-start gap-4">
-                <Image
-                  src="/assets/icons/right-tick.png"
-                  alt="tick"
-                  width={22}
-                  height={22}
-                  className="mt-[5px]"
-                />
-                <p className="text-[18px] font-semibold leading-[28px] text-[#E6E6F0]">
-                  Speak in your native tongue; our app supports multiple languages for voice tracking.
-                </p>
-              </div>
-
-            </div>
-
-            {/* BUTTON */}
-            <a
-              href="#"
-              className="mt-12 relative w-[260px] h-[64px] flex items-center justify-center rounded-[16px] overflow-hidden"
-            >
-              <Image
-                src="/assets/images/as-back.png"
-                alt="bg"
-                fill
-                className="object-cover"
-              />
-              <div className="absolute inset-0 bg-[#2A1E5C]/80"></div>
-
-              <span className="relative text-white text-[16px] font-medium">
-                Watch Video
-              </span>
-            </a>
-          </div>
-
-          {/* RIGHT */}
-          <div className="flex justify-center relative">
-            
-            {/* Stars */}
-            <div className="absolute top-[0px] right-[60px] text-white text-xl">✦</div>
-            <div className="absolute top-[60px] left-[20px] text-white text-sm">✦</div>
-            <div className="absolute bottom-[60px] right-[20px] text-white text-sm">✦</div>
-
-            {/* YELLOW CARD */}
-            <div className="bg-[#F4C542] pb-30 rounded-[20px] px-12 pt-10 text-center shadow-[0_10px_30px_rgba(0,0,0,0.25)] relative z-10 w-[320px]">
-              <p className="text-[#0B0B0B] text-[25px] font-bold leading-[34px]">
-                Yesterday I bought <br />
-                5 chocolates <br />
-                for $2.5 each
-              </p>
-            </div>
-
-            {/* MIC ANIMATION */}
-            {/* MIC ANIMATION (FINAL CLEAN VERSION) */}
-<div className="absolute top-[140px] w-full flex justify-center bg-white">
-  
-  <div className="relative flex items-center justify-center z-20 !bg-white rounded-full" >
-    {/* Outer Glow Ring */}
-    <span className="absolute !bg-white w-[150px] h-[150px] rounded-full bg-white/10 animate-pulse-slow"></span>
-
-    {/* Inner Glow Ring */}
-    <span className="absolute !bg-white w-[120px] h-[120px] rounded-full bg-white/20 animate-pulse-delay"></span>
-
-    {/* Solid White Circle (MAIN BG) */}
-    <div className="w-[90px] h-[90px] !bg-white rounded-full flex items-center justify-center shadow-[0_8px_20px_rgba(0,0,0,0.25)]">
-
-      {/* Your Mic Image */}
-      <Image
-        src="/assets/images/as-mike.png"   // ✅ YOUR IMAGE
-        alt="mic"
-        width={36}
-        height={36}
-        className="object-contain"
-      />
-
-    </div>
-
-  </div>
-</div>
-
-          </div>
-
+        <div className="stats-buttons">
+          <img src="/images/google-play.png" />
+          <img src="/images/app-store.png" />
         </div>
+
       </div>
     </section>
   );
-};
+}
+@import "tailwindcss";
 
+@layer components {
 
+  .stats-section {
+    @apply py-[80px] bg-[#f7f7f7];
+  }
 
-export default AskAISection;
+  .cs-container {
+    @apply max-w-[900px] mx-auto px-[15px] text-center;
+  }
 
-// viods//
+  /* 🔥 BIG NUMBER (gradient) */
+  .stats-number {
+    @apply text-[80px] font-bold leading-none;
+    background: linear-gradient(90deg, #5b2eff, #00c896);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .stats-number span {
+    @apply text-[#00c896];
+  }
+
+  /* ✍️ TEXT */
+  .stats-text {
+    @apply text-[20px] mt-[20px] leading-[1.6] text-gray-800;
+  }
+
+  .stats-text span {
+    @apply text-[#5b2eff] font-semibold;
+  }
+
+  /* 📦 Available text */
+  .stats-available {
+    @apply mt-[30px] text-gray-500;
+  }
+
+  /* 🛒 Store buttons */
+  .stats-buttons {
+    @apply flex justify-center gap-[20px] mt-[20px] flex-wrap;
+  }
+
+  .stats-buttons img {
+    @apply w-[160px] cursor-pointer transition duration-300;
+  }
+
+  .stats-buttons img:hover {
+    @apply scale-105;
+  }
+
+  /* 📱 Responsive */
+  @media (max-width: 768px) {
+    .stats-number {
+      @apply text-[50px];
+    }
+
+    .stats-text {
+      @apply text-[16px];
+    }
+
+    .stats-buttons img {
+      @apply w-[130px];
+    }
+  }
+
+}
+//////////////////////////
 "use client";
 
-import { useState } from "react";
-import Image from "next/image";
+import { useEffect, useState } from "react";
 
-import v1 from "../../assets/images/v1.png";
-import v2 from "../../assets/images/v2.png";
-import v3 from "../../assets/images/v3.png";
-import v4 from "../../assets/images/v4.png";
-import v5 from "../../assets/images/v5.png";
-import PlayBtn from "../../assets/images/play-icon.png";
+/* ✅ images import */
+import f1 from "@/assets/images/f1.png";
+import f2 from "@/assets/images/f2.png";
+import f3 from "@/assets/images/f3.png";
+import f4 from "@/assets/images/f4.png";
+import f5 from "@/assets/images/f5.png";
+import f6 from "@/assets/images/f6.png";
 
-const videoData = [
-  { title: "Add Expenses", img: v1 },
-  { title: "Set Budget", img: v2 },
-  { title: "Create Split Event", img: v3 },
-  { title: "Shopping List", img: v4 },
-  { title: "Family Budget", img: v5 },
-];
+export default function FeatureStats() {
+  const [count1, setCount1] = useState(0);
+  const [count2, setCount2] = useState(0);
+  const [count3, setCount3] = useState(0);
 
-const VideoGuidesSection = () => {
-  const [open, setOpen] = useState(false);
+  useEffect(() => {
+    let i = 0;
+    const interval = setInterval(() => {
+      i += 2;
+
+      setCount1(Math.min(i, 100));
+      setCount2(Math.min(i, 100));
+      setCount3(Math.min(i / 10, 10));
+
+      if (i >= 100) clearInterval(interval);
+    }, 30);
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
-    <section className="w-full bg-[#EEF0F6] py-[80px]">
-      <div className="max-w-[1100px] mx-auto px-6 text-center">
+    <section className="feature-section">
+      <div className="cs-container text-center">
 
-        {/* TITLE */}
-        <h2 className="text-[22px] font-medium text-[#2A2A2A] mb-12">
-          Master money management with{" "}
-          <span className="font-semibold">
-            Spendable Video Guides
-          </span>
+        <h2 className="feature-heading">
+          Available for iOS & Android with amazing personalization features
         </h2>
 
-        {/* GRID */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6">
+        <p className="feature-sub">
+          Spendable is an engaging and efficient solution for users to manage their finances across platforms.
+        </p>
 
-          {videoData.map((item, index) => (
-            <div key={index} className="flex flex-col items-center">
+        {/* Counters */}
+        <div className="feature-counter">
+          <div>
+            <h3>{count1}%</h3>
+            <p>Safe & Secure</p>
+          </div>
 
-              {/* CARD */}
-              <div className="relative w-full max-w-[180px] rounded-[16px] overflow-hidden shadow-md group cursor-pointer">
+          <div>
+            <h3>{count2}+</h3>
+            <p>Currency Support</p>
+          </div>
 
-                {/* IMAGE */}
-                <Image
-                  src={item.img}
-                  alt={item.title}
-                  width={200}
-                  height={300}
-                  className="w-full h-[260px] object-cover"
-                />
-
-                {/* HOVER OVERLAY */}
-                <div className="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition"></div>
-
-                {/* PLAY BUTTON (BOTTOM RIGHT) */}
-                <button
-                  onClick={() => setOpen(true)}
-                  className="absolute bottom-3 right-3 w-[50px] h-[50px] flex items-center justify-center cursor-pointer group/play"
-                >
-                  {/* WHITE PULSE */}
-                  <span className="absolute w-[70px] h-[70px] rounded-full bg-white/40 scale-0 opacity-0 group-hover/play:scale-8   0 group-hover/play:opacity-100 transition duration-300"></span>
-
-                  {/* BUTTON */}
-                  <div className="relative bg-white rounded-full w-[50px] h-[50px] flex items-center justify-center shadow-lg">
-                    <Image src={PlayBtn} alt="play" width={20} height={20} />
-                  </div>
-                </button>
-
-              </div>
-
-              {/* TITLE */}
-              <p className="mt-3 text-[14px] font-medium text-[#333]">
-                {item.title}
-              </p>
-
-            </div>
-          ))}
-
-        </div>
-
-        {/* BUTTON */}
-        <button className="mt-12 px-6 py-3 bg-gradient-to-r from-purple-500 to-indigo-500 text-white rounded-lg font-medium shadow hover:opacity-90 transition">
-          User Guide →
-        </button>
-
-      </div>
-
-      {/* POPUP VIDEO */}
-      {open && (
-        <div
-          onClick={() => setOpen(false)}
-          className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50"
-        >
-          <div
-            onClick={(e) => e.stopPropagation()}
-            className="relative w-[90%] md:w-[800px] bg-black rounded-xl overflow-hidden"
-          >
-
-            {/* CLOSE */}
-            <button
-              onClick={() => setOpen(false)}
-              className="absolute top-2 right-2 bg-white w-9 h-9 flex items-center justify-center rounded"
-            >
-              ✕
-            </button>
-
-            {/* VIDEO */}
-            <div className="aspect-video">
-              <iframe
-                className="w-full h-full"
-                src="https://www.youtube.com/embed/x76YKI7BmdY?autoplay=1"
-                allow="autoplay; encrypted-media; fullscreen"
-                allowFullScreen
-              ></iframe>
-            </div>
-
+          <div>
+            <h3>{count3}+</h3>
+            <p>Languages Support</p>
           </div>
         </div>
-      )}
 
+        {/* 🔥 Images Grid */}
+        <div className="feature-grid">
+
+          <img src={f1.src} className="img-1" />
+          <img src={f2.src} className="img-2" />
+          <img src={f3.src} className="img-3" />
+          <img src={f4.src} className="img-4" />
+          <img src={f5.src} className="img-5" />
+          <img src={f6.src} className="img-6" />
+
+        </div>
+
+      </div>
     </section>
   );
-};
+}@import "tailwindcss";
 
-export default VideoGuidesSection;
-// 
+@layer components {
 
-/* ✅ Animation utility */
+  .feature-section {
+    @apply py-[100px] text-white relative overflow-hidden;
+    background: linear-gradient(135deg, #5b2eff, #8b2cff);
+  }
 
-.avatar-animate {
-    animation: floatPulse ease-in-out infinite;
-    will-change: transform;
-}
+  .cs-container {
+    @apply max-w-[1100px] mx-auto px-[15px];
+  }
 
-@keyframes pulseRing {
-    0% {
-        transform: scale(0.8);
-        opacity: 0.6;
+  /* Heading */
+  .feature-heading {
+    @apply text-[32px] font-bold leading-tight;
+  }
+
+  .feature-sub {
+    @apply text-[14px] mt-[10px] opacity-80 max-w-[600px] mx-auto;
+  }
+
+  /* Counters */
+  .feature-counter {
+    @apply flex justify-center gap-[60px] mt-[40px] flex-wrap;
+  }
+
+  .feature-counter h3 {
+    @apply text-[40px] font-bold;
+  }
+
+  .feature-counter p {
+    @apply text-[14px] opacity-80;
+  }
+
+  /* 🔥 GRID (DESKTOP default) */
+  .feature-grid {
+    @apply grid grid-cols-3 gap-[20px] mt-[60px];
+  }
+
+  .feature-grid img {
+    @apply w-full rounded-[16px] transition duration-300;
+  }
+
+  /* 🎯 uneven layout (desktop feel) */
+  .img-1 { @apply col-span-2; }
+  .img-2 { @apply col-span-1; }
+  .img-3 { @apply col-span-1; }
+  .img-4 { @apply col-span-1; }
+  .img-5 { @apply col-span-1; }
+  .img-6 { @apply col-span-2; }
+
+  /* hover */
+  .feature-grid img:hover {
+    @apply scale-105;
+  }
+
+  /* 🔥 Background shapes */
+  .feature-section::before {
+    content: "";
+    @apply absolute w-[300px] h-[300px] bg-white/10 rounded-full top-[-50px] left-[-50px];
+  }
+
+  .feature-section::after {
+    content: "";
+    @apply absolute w-[250px] h-[250px] bg-white/10 rounded-full bottom-[-50px] right-[-50px];
+  }
+
+  /* 📱 TABLET */
+  @media (max-width: 1024px) {
+    .feature-heading {
+      @apply text-[26px];
     }
-    70% {
-        transform: scale(1.5);
-        opacity: 0;
+
+    .feature-counter {
+      @apply gap-[30px];
     }
-    100% {
-        opacity: 0;
+
+    .feature-counter h3 {
+      @apply text-[30px];
     }
+
+    .feature-grid {
+      @apply grid-cols-2;
+    }
+
+    .img-1,
+    .img-2,
+    .img-3,
+    .img-4,
+    .img-5,
+    .img-6 {
+      @apply col-span-1;
+    }
+  }
+
+  /* 📱 MOBILE */
+  @media (max-width: 768px) {
+    .feature-section {
+      @apply py-[60px];
+    }
+
+    .feature-heading {
+      @apply text-[20px];
+    }
+
+    .feature-sub {
+      @apply text-[13px];
+    }
+
+    .feature-counter {
+      @apply flex-col items-center gap-[20px];
+    }
+
+    .feature-counter h3 {
+      @apply text-[26px];
+    }
+
+    .feature-grid {
+      @apply grid-cols-1;
+    }
+
+    .feature-grid img {
+      @apply w-full;
+    }
+  }
+
 }
-
-.animate-pulse-slow {
-    animation: pulseRing 2s infinite;
-}
-
-.animate-pulse-delay {
-    animation: pulseRing 2s infinite;
-    animation-delay: 0.6s;
-}
-//
-
-
